@@ -25,8 +25,6 @@ Bar bar;
 void* poll_events(void* arg) {
     printf("Starting event polling thread.\n");
 
-    SDL_Renderer* renderer;
-
     while (running == 1) {
         SDL_Event ev;
         SDL_PollEvent(&ev);
@@ -42,7 +40,6 @@ void* poll_events(void* arg) {
         if (ev.type == SDL_KEYUP) bar.vy = 0;
     }
 }
-
 
 void* render_graphics(void* arg) {
     printf("Starting rendering thread.\n");
@@ -70,7 +67,6 @@ void* render_graphics(void* arg) {
 
     SDL_DestroyRenderer(renderer);
 }
-
 
 int main(int argc, char *argv[]) {
     printf("Classic Pong.\n");
@@ -120,7 +116,6 @@ int main(int argc, char *argv[]) {
         keep_bar_inbounds(&bar, height);
     }
 
-   
     SDL_DestroyWindow(window);
 
     SDL_Quit();
